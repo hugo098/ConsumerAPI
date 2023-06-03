@@ -1,6 +1,6 @@
 ﻿using UtilityLibrary;
 
-namespace JSONPlaceholderConsumer.Services.JSONPlaceholder
+namespace ConsumerAPI.Services.JSONPlaceholder
 {
     public class JsonPlaceholderUserService : BaseService
     {

@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
-using JSONPlaceholderConsumer.Models.Posts;
-using JSONPlaceholderConsumer.Models.Posts.Dtos;
-using JSONPlaceholderConsumer.Models.Users;
-using JSONPlaceholderConsumer.Services.IServices;
+using ConsumerAPI.Models.Posts;
+using ConsumerAPI.Models.Posts.Dtos;
+using ConsumerAPI.Models.Users;
+using ConsumerAPI.Services.IServices;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using UtilityLibrary;
 
-namespace JSONPlaceholderConsumer.Controllers.v1
+namespace ConsumerAPI.Controllers.v1
 {
     [Route("api/v{version:apiVersion}/posts")]
     [ApiController]

@@ -1,9 +1,9 @@
-﻿using JSONPlaceholderConsumer.Services.IServices;
+﻿using ConsumerAPI.Services.IServices;
 using Newtonsoft.Json;
 using System.Text;
 using UtilityLibrary;
 
-namespace JSONPlaceholderConsumer.Services
+namespace ConsumerAPI.Services
 {
     public class BaseService : IBaseService
     {
