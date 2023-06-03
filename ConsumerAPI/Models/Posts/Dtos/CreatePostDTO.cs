@@ -1,0 +1,16 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace JSONPlaceholderConsumer.Models.Posts.Dtos
+{
+    public class CreatePostDTO
+    {
+        [Range(1, int.MaxValue, ErrorMessage = "Please enter a value bigger than {0}")]
+        public int UserId { get; set; }
+        [Required]
+        [MaxLength(100), MinLength(1)]
+        public string Title { get; set; }
+        [Required]
+        [MaxLength(500), MinLength(1)]
+        public string Body { get; set; }
+    }
+}
