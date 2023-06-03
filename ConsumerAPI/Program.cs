@@ -1,9 +1,13 @@
-using JSONPlaceholderConsumer.Services.IServices;
-using JSONPlaceholderConsumer.Services.JSONPlaceholder;
-using JSONPlaceholderConsumer;
+using ConsumerAPI.Services.IServices;
+using ConsumerAPI.Services.JSONPlaceholder;
+using ConsumerAPI;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
 using UtilityLibrary;
+using ConsumerAPI.Data;
+using Microsoft.EntityFrameworkCore;
+using ConsumerAPI.Repositories.IRepository;
+using ConsumerAPI.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +38,16 @@ builder.Services.AddSwaggerGen(options => {
             Url = new Uri("https://github.com/hugo098")
         },
     });
+    options.SwaggerDoc("v2", new OpenApiInfo
+    {
+        Version = "v2.0",
+        Title = "Consumer API v2",
+        Contact = new OpenApiContact
+        {
+            Name = "Hugo Rodriguez",
+            Url = new Uri("https://github.com/hugo098")
+        },
+    });
 });
 builder.Services.AddMvc().ConfigureApiBehaviorOptions(opt =>
 {
@@ -45,11 +59,15 @@ builder.Services.AddMvc().ConfigureApiBehaviorOptions(opt =>
     opt.SuppressMapClientErrors = true;
 });
 
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddHttpClient<IJSONPlaceholderService, JsonPlaceholderPostService>();
 builder.Services.AddScoped<IJSONPlaceholderService, JsonPlaceholderPostService>();
 builder.Services.AddHttpClient<JsonPlaceholderUserService>();
 builder.Services.AddScoped<JsonPlaceholderUserService>();
 builder.Services.AddAutoMapper(typeof(MappingConfig));
+
+builder.Services.AddDbContext<NorthwindContext>
+    (options => options.UseSqlite("Name=NorthwindDB"));
 
 var app = builder.Build();
 
@@ -59,6 +77,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(options => {
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "ConsumerAPIv1");
+        options.SwaggerEndpoint("/swagger/v2/swagger.json", "ConsumerAPIv2");
     });
 }
 
