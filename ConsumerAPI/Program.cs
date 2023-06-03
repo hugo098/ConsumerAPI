@@ -3,6 +3,7 @@ using JSONPlaceholderConsumer.Services.JSONPlaceholder;
 using JSONPlaceholderConsumer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
+using UtilityLibrary;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +34,15 @@ builder.Services.AddSwaggerGen(options => {
             Url = new Uri("https://github.com/hugo098")
         },
     });
+});
+builder.Services.AddMvc().ConfigureApiBehaviorOptions(opt =>
+{
+    opt.InvalidModelStateResponseFactory = context =>
+    {
+        var problems = new CustomBadRequest(context);
+        return new BadRequestObjectResult(problems);
+    };
+    opt.SuppressMapClientErrors = true;
 });
 
 builder.Services.AddHttpClient<IJSONPlaceholderService, JsonPlaceholderPostService>();
