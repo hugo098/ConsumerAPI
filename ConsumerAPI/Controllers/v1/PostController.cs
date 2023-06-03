@@ -50,7 +50,7 @@ namespace JSONPlaceholderConsumer.Controllers.v1
 
         }
 
-        [HttpGet("{id:int}")]
+        [HttpGet("{id:int}", Name = "GetPost")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -96,14 +96,14 @@ namespace JSONPlaceholderConsumer.Controllers.v1
                     _response.BuildResponse(errors: new List<string>() { $"User with id {createPostDto.UserId} not found" },
                         isSuccess: false,
                         statusCode: HttpStatusCode.BadRequest);
-                    return NotFound(_response);
+                    return BadRequest(_response);
                 }
 
                 Post post = await _JSONPlaceholderPostService.CreateAsync<Post>(createPostDto);
 
                 _response.BuildResponse(result: _mapper.Map<PostDTO>(post), isSuccess: true, statusCode: HttpStatusCode.Created);
 
-                return Ok(_response);
+                return CreatedAtRoute("GetPost", new { id = post.Id }, _response);
             }
             catch (Exception ex)
             {
@@ -129,7 +129,7 @@ namespace JSONPlaceholderConsumer.Controllers.v1
                     _response.BuildResponse(errors: new List<string>() { $"User with id {updatePostDTO.UserId} not found" },
                         isSuccess: false,
                         statusCode: HttpStatusCode.BadRequest);
-                    return NotFound(_response);
+                    return BadRequest(_response);
                 }
 
                 Post post = await _JSONPlaceholderPostService.GetAsync<Post>(id);
