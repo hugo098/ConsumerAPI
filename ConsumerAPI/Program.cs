@@ -27,7 +27,7 @@ builder.Services.AddSwaggerGen(options => {
     options.SwaggerDoc("v1", new OpenApiInfo
     {
         Version = "v1.0",
-        Title = "JSON Placeholder Consumer API v1",
+        Title = "Consumer API v1",
         Contact = new OpenApiContact
         {
             Name = "Hugo Rodriguez",
