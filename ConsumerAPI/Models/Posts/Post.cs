@@ -1,4 +1,4 @@
-﻿namespace JSONPlaceholderConsumer.Models.Posts
+﻿namespace ConsumerAPI.Models.Posts
 {
     public class Post
     {
