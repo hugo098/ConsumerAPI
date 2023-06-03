@@ -1,6 +1,6 @@
 ﻿using UtilityLibrary;
 
-namespace JSONPlaceholderConsumer.Services.IServices
+namespace ConsumerAPI.Services.IServices
 {
     public interface IBaseService
     { 

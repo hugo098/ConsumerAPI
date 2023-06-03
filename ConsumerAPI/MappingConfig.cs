@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
-using JSONPlaceholderConsumer.Models.Posts;
-using JSONPlaceholderConsumer.Models.Posts.Dtos;
+using ConsumerAPI.Models.Posts;
+using ConsumerAPI.Models.Posts.Dtos;
+using ConsumerAPI.Models.Products.Dtos;
+using ConsumerAPI.Models.Products;
 
-namespace JSONPlaceholderConsumer
+namespace ConsumerAPI
 {
     public class MappingConfig: Profile
     {
@@ -11,6 +13,9 @@ namespace JSONPlaceholderConsumer
             CreateMap<Post, CreatePostDTO>().ReverseMap();
             CreateMap<Post, UpdatePostDTO>().ReverseMap();
             CreateMap<Post, PostDTO>().ReverseMap();
+
+            CreateMap<Product, ProductDTO>().ReverseMap();
+            CreateMap<Product, CreateProductDTO>().ReverseMap();
         }
     }
 }

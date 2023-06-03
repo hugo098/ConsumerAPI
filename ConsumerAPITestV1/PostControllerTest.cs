@@ -1,9 +1,9 @@
 using AutoMapper;
-using JSONPlaceholderConsumer.Controllers.v1;
-using JSONPlaceholderConsumer.Models.Posts;
-using JSONPlaceholderConsumer.Models.Posts.Dtos;
-using JSONPlaceholderConsumer.Models.Users;
-using JSONPlaceholderConsumer.Services.IServices;
+using ConsumerAPI.Controllers.v1;
+using ConsumerAPI.Models.Posts;
+using ConsumerAPI.Models.Posts.Dtos;
+using ConsumerAPI.Models.Users;
+using ConsumerAPI.Services.IServices;
 using Moq;
 using System.Net;
 using UtilityLibrary;

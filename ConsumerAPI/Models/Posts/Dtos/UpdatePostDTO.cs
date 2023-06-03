@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace JSONPlaceholderConsumer.Models.Posts.Dtos
+namespace ConsumerAPI.Models.Posts.Dtos
 {
     public class UpdatePostDTO
     {

@@ -1,8 +1,8 @@
-﻿using JSONPlaceholderConsumer.Models.Posts.Dtos;
-using JSONPlaceholderConsumer.Services.IServices;
+﻿using ConsumerAPI.Models.Posts.Dtos;
+using ConsumerAPI.Services.IServices;
 using UtilityLibrary;
 
-namespace JSONPlaceholderConsumer.Services.JSONPlaceholder
+namespace ConsumerAPI.Services.JSONPlaceholder
 {
     public class JsonPlaceholderPostService : BaseService, IJSONPlaceholderService
     {
