@@ -1,4 +1,4 @@
-﻿namespace JSONPlaceholderConsumer.Models.Users
+﻿namespace ConsumerAPI.Models.Users
 {
     public class User
     {
